@@ -1,0 +1,42 @@
+import pandas as pd
+from collections import deque, defaultdict
+import time
+import json
+from pathlib import Path
+project_root = Path(__file__).resolve().parent.parent.parent
+file_path = project_root / "NN_training_processed_dataset_Final.csv"
+df = pd.read_csv(file_path)
+cache_size = 1000
+cache_queue = deque()
+cache_set = set()
+hits = 0
+misses = 0
+block_access_frequency = defaultdict(int)
+block_numbers = df['block_number'].tolist()
+start_time = time.time()
+for block_number in block_numbers:
+    block_access_frequency[block_number] += 1
+    if block_number in cache_set:
+        hits += 1
+    else:
+        misses += 1
+        if len(cache_set) >= cache_size:
+            evicted = cache_queue.popleft()
+            cache_set.remove(evicted)
+        cache_queue.append(block_number)
+        cache_set.add(block_number)
+execution_time = time.time() - start_time
+hit_ratio = hits / (hits + misses) if (hits + misses) > 0 else 0
+results = {
+    "Algorithm": "FIFO",
+    "Cache_Size": cache_size,
+    "Hit_Ratio": round(hit_ratio, 4),
+    "Execution_Time_Sec": round(execution_time, 4)
+}
+results_dir = project_root / "results"
+results_dir.mkdir(exist_ok=True)
+results_file = results_dir / "baseline_metrics.json"
+with open(results_file, "a") as f:
+    json.dump(results, f)
+    f.write("\n")
+print(json.dumps(results, indent=2))

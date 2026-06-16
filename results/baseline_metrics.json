@@ -1,0 +1,8 @@
+{"Algorithm": "LRU", "Cache_Size": 1000, "Hit_Ratio": 0.0069, "Execution_Time_Sec": 0.1318}
+{"Algorithm": "LFU", "Cache_Size": 1000, "Hit_Ratio": 0.008, "Execution_Time_Sec": 16.0498}
+{"Algorithm": "FIFO", "Cache_Size": 1000, "Hit_Ratio": 0.0066, "Execution_Time_Sec": 0.0756}
+{"Algorithm": "Logistic_Regression", "Cache_Size": 1000, "Test_Accuracy": 0.9867, "Hit_Ratio": 0.0112, "Execution_Time_Sec": 3.4816}
+{"Algorithm": "Deep_NN", "Cache_Size": 1000, "Test_Accuracy": 0.9455, "Hit_Ratio": 0.0112, "Belady_Hit_Ratio": 0.0133, "Execution_Time_Sec": 3.4339}
+{"Algorithm": "Deep_NN", "Cache_Size": 1000, "Test_Accuracy": 0.9993, "Hit_Ratio": 0.0116, "Belady_Hit_Ratio": 0.0133, "Execution_Time_Sec": 6.7277}
+{"Algorithm": "Belady_MIN", "Cache_Size": 1000, "Hit_Ratio": 0.0188, "Execution_Time_Sec": 3.2768}
+{"Algorithm": "LSTM_Sequence", "Cache_Size": 1000, "Test_Accuracy": 0.9435, "Hit_Ratio": 0.0131, "Execution_Time_Sec": 13.7226}
